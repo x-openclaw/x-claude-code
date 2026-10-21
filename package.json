@@ -1,0 +1,21 @@
+{
+  "name": "x-claude-code",
+  "version": "0.1.0",
+  "description": "OpenClaw provider plugin: Claude Code models through an AxonHub gateway (Anthropic format)",
+  "private": true,
+  "type": "module",
+  "openclaw": {
+    "extensions": [
+      "./index.js"
+    ],
+    "providers": [
+      "x-claude-code"
+    ],
+    "compat": {
+      "pluginApi": ">=2026.10.5"
+    },
+    "build": {
+      "openclawVersion": "2026.10.5"
+    }
+  }
+}
