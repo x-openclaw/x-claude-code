@@ -6,6 +6,7 @@ OpenClaw provider plugin: Claude Code models through an AxonHub gateway (Anthrop
 - Models: models with `owned_by: claudecode`, discovered live from AxonHub's `/v1/models`. New models appear after a Refresh in the model picker, or once the 60 s discovery cache expires.
 - Embedding and other non-chat models are filtered out.
 - Adding a key never replaces the primary model chosen in the UI.
+- Context window and output limits come from [models.dev](https://models.dev) (effort variants such as `-high` use their base model's limits). A `contextWindow` setting overrides both. Models without a match get 1M.
 
 ## API address and key
 
@@ -15,7 +16,8 @@ Set them in the OpenClaw UI (**Plugins → X Claude Code → Settings**) or with
 | ------- | -------- | ------- | ------- |
 | API address | `baseUrl` | `X_CLAUDE_CODE_BASE_URL` | `https://axonhub.example.com/anthropic` |
 | API key | `apiKey` | `X_CLAUDE_CODE_API_KEY` | API key |
-| Context window | `contextWindow` | `X_CLAUDE_CODE_CONTEXT_WINDOW` | optional, default `1000000` |
+| Context window | `contextWindow` | `X_CLAUDE_CODE_CONTEXT_WINDOW` | optional, default: models.dev, then `1000000` |
+| Limits from models.dev | `modelsDev` | `X_CLAUDE_CODE_MODELS_DEV` | `true` (default) |
 
 The key can also be saved as an auth profile under **Settings → Model providers**, or with `openclaw models auth paste-api-key --provider x-claude-code`. Order: UI `apiKey`, then the auth profile, then the env var.
 
